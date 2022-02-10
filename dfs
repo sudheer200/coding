@@ -1,0 +1,22 @@
+ void  dfs(int i,vector<int>&k, vector<int>&c, vector<int> adj[]){
+    k.push_back(i);
+    for(int j=0;j<adj[i].size();j++){
+        if(c[adj[i][j]]==0){
+            c[adj[i][j]]=1;
+            dfs(adj[i][j],k,c,adj);
+        }
+    }
+    
+}// Function to return a list containing the DFS traversal of the graph.
+    vector<int> dfsOfGraph(int V, vector<int> adj[]) {
+        vector<int>k;
+        vector<int>c;
+        for(int i=0;i<V;i++){
+            c.push_back(0);
+        }
+        c[0]=1;
+       
+        dfs(0,k,c,adj);
+        return k;
+    }
+   
